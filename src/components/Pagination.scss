@@ -1,0 +1,51 @@
+.pagination-container {
+  position: fixed;
+  bottom: 0;
+  width: calc(100% - 40px); /* Учитываем отступы для выравнивания с таблицей */
+  max-width: 1200px; /* Задаем максимальную ширину, если таблица имеет фиксированную ширину */
+  margin: 0 auto; /* Выравнивание по центру */
+  background-color: #fff; /* Фон, чтобы текст не сливался с фоном страницы */
+  padding: 10px 20px;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Тень для отделения от контента */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000; /* Убедитесь, что пагинация выше других элементов */
+}
+
+/* Убедитесь, что контейнер таблицы имеет отступ снизу */
+.table-container {
+  padding-bottom: 60px; /* Увеличьте значение по мере необходимости */
+}
+
+.rows-per-page {
+  display: flex;
+  align-items: center;
+}
+
+.rows-per-page select {
+  margin-left: 5px;
+  padding: 5px;
+}
+
+.page-info {
+  font-size: 14px;
+}
+
+.page-controls {
+  display: flex;
+  align-items: center;
+}
+
+.page-controls button {
+  background: none;
+  border: none;
+  font-size: 18px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.page-controls button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
