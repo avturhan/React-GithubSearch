@@ -1,21 +1,14 @@
 .pagination-container {
-  position: fixed;
-  bottom: 0;
-  width: calc(100% - 40px); /* Учитываем отступы для выравнивания с таблицей */
-  max-width: 1200px; /* Задаем максимальную ширину, если таблица имеет фиксированную ширину */
-  margin: 0 auto; /* Выравнивание по центру */
-  background-color: #fff; /* Фон, чтобы текст не сливался с фоном страницы */
-  padding: 10px 20px;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Тень для отделения от контента */
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  z-index: 1000; /* Убедитесь, что пагинация выше других элементов */
-}
-
-/* Убедитесь, что контейнер таблицы имеет отступ снизу */
-.table-container {
-  padding-bottom: 60px; /* Увеличьте значение по мере необходимости */
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f1f1f1;
+  border-top: 1px solid #ccc;
+  position: sticky; /* Make the pagination bar sticky */
+  bottom: 0; /* Stick it to the bottom of the container */
+  width: 50%;
+  box-sizing: border-box;
 }
 
 .rows-per-page {
@@ -23,29 +16,40 @@
   align-items: center;
 }
 
+.rows-per-page label {
+  margin-right: 10px;
+}
+
 .rows-per-page select {
-  margin-left: 5px;
   padding: 5px;
 }
 
 .page-info {
-  font-size: 14px;
-}
-
-.page-controls {
-  display: flex;
-  align-items: center;
+  flex: 1;
+  text-align: center;
 }
 
 .page-controls button {
-  background: none;
-  border: none;
-  font-size: 18px;
+  padding: 5px 10px;
   margin: 0 5px;
+  background-color: #007bff;
+  border: none;
+  color: white;
   cursor: pointer;
 }
 
 .page-controls button:disabled {
-  color: #ccc;
+  background-color: #ccc;
   cursor: not-allowed;
+}
+
+/* Медиазапросы для адаптивности */
+@media (min-width: 768px) {
+  .pagination-container {
+    flex-wrap: nowrap; /* Убираем wrap для планшетов и выше */
+  }
+
+  .rows-per-page {
+    margin-bottom: 0; /* Убираем отступ для планшетов и выше */
+  }
 }

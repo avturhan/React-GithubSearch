@@ -39,20 +39,7 @@ const Pagination = ({
               totalRows
             )} of ${totalRows}`}
       </div>
-      <div className="page-controls">
-        <button
-          onClick={() => handlePageChange(currentPage - 1)}
-          disabled={currentPage === 1 || rowsPerPage === "all"}
-        >
-          &lt;
-        </button>
-        <button
-          onClick={() => handlePageChange(currentPage + 1)}
-          disabled={currentPage === totalPages || rowsPerPage === "all"}
-        >
-          &gt;
-        </button>
-      </div>
+
     </div>
   );
 };

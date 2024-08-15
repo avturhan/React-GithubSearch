@@ -9,6 +9,7 @@ function Table({ data, onRepoSelect, currentPage, rowsPerPage }) {
     direction: "ascending",
   });
   const [filteredData, setFilteredData] = useState(data);
+  const [isReversed, setIsReversed] = useState(false);
 
   useEffect(() => {
     const filtered = data.filter((repo) => {
@@ -53,6 +54,20 @@ function Table({ data, onRepoSelect, currentPage, rowsPerPage }) {
     // Поиск сработает автоматически благодаря useEffect, ничего делать не нужно
   };
 
+  // Вычисляем индекс начала и конца текущей страницы
+  const startIndex = (currentPage - 1) * rowsPerPage;
+  const endIndex = startIndex + rowsPerPage;
+
+  // Срез данных для текущей страницы
+  const pageData = sortedData.slice(startIndex, endIndex);
+
+  // Инвертируем порядок строк, если включен режим реверса
+  const displayedData = isReversed ? pageData.reverse() : pageData;
+
+  const handleReverse = () => {
+    setIsReversed(!isReversed);
+  };
+
   return (
     <div className="table-container">
       <div className="table-search">
@@ -70,7 +85,7 @@ function Table({ data, onRepoSelect, currentPage, rowsPerPage }) {
       <table className="repository-table">
         <thead>
           <tr>
-            <th>№</th>
+            <th onClick={handleReverse}>№</th>
             <th onClick={() => handleSort("name")}>Название</th>
             <th onClick={() => handleSort("language")}>Язык</th>
             <th onClick={() => handleSort("forks")}>Число форков</th>
@@ -79,9 +94,9 @@ function Table({ data, onRepoSelect, currentPage, rowsPerPage }) {
           </tr>
         </thead>
         <tbody>
-          {sortedData.map((repo, index) => (
+          {displayedData.map((repo, index) => (
             <tr key={index} onClick={() => onRepoSelect(repo)}>
-              <td>{index + 1 + (currentPage - 1) * rowsPerPage}</td>
+              <td>{isReversed ? endIndex - index : startIndex + index + 1}</td>
               <td>{repo.name}</td>
               <td>{repo.language}</td>
               <td>{repo.forks}</td>

@@ -19,10 +19,12 @@
 .table-container {
   flex: 1;
   overflow: auto;
+  width: 99%;
+  height: 100%;
 }
 
-.details-panel {
-  width: 800px; /* Увеличиваем ширину панели с деталями */
+.RepoDetails {
+  width: 500px; /* Увеличиваем ширину панели с деталями */
   flex-shrink: 0;
   overflow: auto;
 }
