@@ -64,9 +64,6 @@ function Table({ data, onRepoSelect, currentPage, rowsPerPage }) {
     setSortConfig({ key, direction });
   };
 
-  // Обработчик поиска (ничего не делает, так как фильтрация осуществляется через useEffect)
-  const handleSearch = () => {};
-
   // Вычисляем индексы начала текущей страницы
   const startIndex = (currentPage - 1) * rowsPerPage;
   // Вычисляем индексы конца текущей страницы
@@ -94,8 +91,6 @@ function Table({ data, onRepoSelect, currentPage, rowsPerPage }) {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
         />
-        {/* Кнопка поиска */}
-        <button onClick={handleSearch}>Искать</button>
       </div>
       {/* Заголовок результатов поиска, если filteredData не пуст */}
       {filteredData.length > 0 && (

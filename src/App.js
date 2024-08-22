@@ -26,7 +26,7 @@ function App() {
   // Определение состояния для текущей страницы
   const [currentPage, setCurrentPage] = useState(1);
   // Определение состояния для количества строк на странице
-  const [rowsPerPage, setRowsPerPage] = useState(30); // По умолчанию 30
+  const [rowsPerPage, setRowsPerPage] = useState(10); // По умолчанию 30
   // Определение состояния для ширины панели
   const [panelWidth, setPanelWidth] = useState(700); // Начальная ширина панели
 
